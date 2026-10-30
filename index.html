@@ -1,1 +1,208 @@
-testttttt
+:root {
+  --bg: #ededf1;
+  --card: #ffffff;
+  --text: #111114;
+  --muted: #8a8a93;
+  --gold: #c9a45c;
+  --black: #000000;
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { min-height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  padding: 56px 20px 64px;
+}
+
+.page {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+/* ---------- Profil ---------- */
+.avatar {
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 36px;
+  border-radius: 50%;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Jika punya file logo: <img class="avatar" src="logo.png" alt="NobleFX"> */
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.mono {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 54px;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -4px;
+  font-style: italic;
+  padding-right: 4px;
+}
+.brand {
+  margin-top: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+.brand-sub {
+  margin-top: 3px;
+  font-size: 5px;
+  letter-spacing: 2px;
+  color: #8c7440;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 500;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* ---------- Daftar link ---------- */
+.links {
+  list-style: none;
+  margin-top: 52px;
+  display: grid;
+  gap: 16px;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 94px;
+  padding: 0 18px;
+  background: var(--card);
+  border-radius: var(--radius);
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.link:hover { transform: scale(1.015); box-shadow: 0 6px 20px rgba(0, 0, 0, .08); }
+.link:active { transform: scale(.99); }
+.link:focus-visible,
+.menu:focus-visible { outline: 3px solid #5b5bd6; outline-offset: 3px; }
+
+.thumb {
+  flex: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Jika punya gambar: ganti isi .thumb dengan <img src="..."> */
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.thumb .mono { font-size: 28px; letter-spacing: -2px; }
+.thumb .brand { margin-top: 3px; font-size: 7px; letter-spacing: 1px; }
+
+.hfm {
+  color: #fff;
+  font-weight: 800;
+  font-size: 27px;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.hfm b { color: #e4202d; font-weight: 800; }
+.hfm-sub {
+  margin-top: 4px;
+  color: #fff;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.label {
+  flex: 1;
+  padding: 0 52px 0 12px; /* menyeimbangkan ruang thumbnail & tombol menu */
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Tombol titik tiga */
+.menu {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.menu:hover { background: #f0f0f3; }
+.menu span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+/* Notifikasi "Link disalin" */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 20px);
+  background: #111114;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Layar kecil ---------- */
+@media (max-width: 420px) {
+  body { padding-top: 40px; }
+  .avatar { width: 128px; height: 128px; margin-bottom: 28px; }
+  h1 { font-size: 30px; }
+  .bio { font-size: 17px; }
+  .link { min-height: 84px; }
+  .label { font-size: 18px; padding-right: 44px; }
+  .thumb { width: 60px; height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
